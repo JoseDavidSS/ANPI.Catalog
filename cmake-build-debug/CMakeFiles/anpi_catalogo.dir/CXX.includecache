@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/jessi/Documents/TEC/ANPI/anpi-catalogo/Tarea01/fun_tras.cpp
+fun_tras.h
+C:/Users/jessi/Documents/TEC/ANPI/anpi-catalogo/Tarea01/fun_tras.h
+
+C:/Users/jessi/Documents/TEC/ANPI/anpi-catalogo/Tarea01/fun_tras.h
+iostream
+-
+vector
+-
+string
+-
+cmath
+-
+

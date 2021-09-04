@@ -50,7 +50,7 @@ double divt(int a)
     int cont = 0;
     double error = 0;
     double x_ksiguiente;
-    while (cont < ITER_MAX || error > TOL)
+    while (cont < ITER_MAX and error > TOL)
     {
         x_ksiguiente = x_0 * (2 - a * x_0);
         error = abs((x_ksiguiente - x_0) / x_ksiguiente);
@@ -58,6 +58,154 @@ double divt(int a)
         cont++;
     }
     cout << "x_k1 " << x_ksiguiente << " "
-         << " iters: " << cont << endl;
+         << " iters: " << x_0 << endl;
     return x_ksiguiente;
+}
+
+
+
+/**
+ * @brief Funcion f(a), donde f(a) = sen(a)
+ *
+ * @param a valor de a
+ * @return double resultado de evaluar f(a)
+ */
+double sen_t(int a)
+{
+    if(a < 0){
+        cout << "Debe ingresar un número mayor a 0";
+        return 0;
+    }
+    double x_knext;
+    double n = 0;
+    double x_k = 0;
+    double fact;
+    double stopCriteria = 1;
+    while ((stopCriteria > TOL) && (n < ITER_MAX))
+    {
+        fact = factorial(2 * n + 1);
+        x_knext = x_k + (pow(-1, n) * (pow(a, 2 * n + 1) * (1/fact)));
+        stopCriteria = abs(x_knext - x_k);
+        n++;
+        x_k = x_knext;
+    }
+    cout << "x_k1 " << x_k << " "
+         << " iters: " << n << endl;
+    return x_k;
+}
+
+
+/**
+ * @brief Funcion f(a), donde f(a) = e ^ a
+ *
+ * @param a valor de a
+ * @return double resultado de evaluar f(a)
+ */
+double exp_t(int a)
+{
+    if(a < 0){
+        cout << "Debe ingresar un número mayor a 0";
+        return 0;
+    }
+    double n = 0;
+    double x_k = 0;
+    double x_knext;
+    double fact;
+    double stopCriteria = 1;
+    while ((stopCriteria > TOL) && (n < ITER_MAX))
+    {
+        fact = factorial(n);
+        x_knext = x_k + pow(a, n) * (1/fact);
+        stopCriteria = abs(x_knext - x_k);
+        n++;
+        x_k = x_knext;
+    }
+    cout << "x_k1 " << x_k << " "
+         << " iters: " << n << endl;
+    return x_k;
+}
+
+
+/**
+ * @brief Funcion f(a), donde f(a) = cos(a)
+ *
+ * @param a valor de a
+ * @return double resultado de evaluar f(a)
+ */
+double cos_t(int a)
+{
+    if(a < 0){
+        cout << "Debe ingresar un número mayor a 0";
+        return 0;
+    }
+    double x_knext;
+    double n = 0;
+    double x_k = 0;
+    double fact;
+    double stopCriteria = 1;
+    while ((stopCriteria > TOL) && (n < ITER_MAX))
+    {
+        fact = factorial(2 * n);
+        x_knext = x_k + (pow(-1, n) * (pow(a, 2 * n) * (1/fact)));
+        stopCriteria = abs(x_knext - x_k);
+        n++;
+        x_k = x_knext;
+    }
+    cout << "x_k1 " << x_k << " "
+         << " iters: " << n << endl;
+    return x_k;
+}
+
+
+/**
+ * @brief Funcion f(a), donde f(a) = ln(a)
+ *
+ * @param a valor de a
+ * @return double resultado de evaluar f(a)
+ */
+double ln_t(double a)
+{
+    if(a < 0){
+        cout << "Debe ingresar un número mayor a 0";
+        return 0;
+    }
+    double x_knext;
+    double n = 0;
+    double x_k = 0;
+    double formula;
+    double stopCriteria = 1;
+    formula = (a - 1) / (a + 1);
+    while ((stopCriteria > TOL) && (n < ITER_MAX))
+    {
+        x_knext = (x_k + (1 / (2 * n + 1)) * pow(formula, 2 * n));
+        stopCriteria = abs(x_knext - x_k);
+        n++;
+        x_k = x_knext;
+    }
+    x_k = x_k * 2 * formula;
+    cout << "x_k1 " << x_k<< " "
+         << " iters: " << n << endl;
+    return x_k;
+}
+
+/**
+ * @brief Se obtiene la constante pi al aproximar utilizando
+ * la suma parcial de la serie de Leibniz
+ *
+ * @return pi
+ */
+double pi() {
+    int i = 0;
+    double pi = 0;
+    double pi_next;
+    double stopCriteria = 1;
+    while ((stopCriteria > TOL) && (i < ITER_MAX)) {
+        pi_next = pi + pow(-1, i) * (4.0 / (2.0 * i + 1));
+        stopCriteria = abs(pi_next - pi);
+        i++;
+        pi = pi_next;
+    }
+    cout << "x_k1 " << pi << " "
+         << " iters: " << i << endl;
+    return pi;
 }

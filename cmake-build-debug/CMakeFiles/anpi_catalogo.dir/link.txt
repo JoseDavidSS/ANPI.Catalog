@@ -1,0 +1,3 @@
+C:\Users\jessi\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\203.7717.62\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\anpi_catalogo.dir/objects.a
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\ar.exe cr CMakeFiles\anpi_catalogo.dir/objects.a @CMakeFiles\anpi_catalogo.dir\objects1.rsp
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE -g   -Wl,--whole-archive CMakeFiles\anpi_catalogo.dir/objects.a -Wl,--no-whole-archive  -o anpi_catalogo.exe -Wl,--out-implib,libanpi_catalogo.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\anpi_catalogo.dir\linklibs.rsp
