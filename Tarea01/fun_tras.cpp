@@ -4,9 +4,8 @@ using namespace std;
 
 int main()
 {
-    for (int i = -5; i < 6; i++)
+    for (double i = -1; i < 1; i+=0.1)
     {
-        cout << i << "^1/" << 2 << " = " << sqrt_t(i) << endl;
-
+        cout << "arcsin(" << i << ") = " << asin_t(i) << endl;
     }
 }

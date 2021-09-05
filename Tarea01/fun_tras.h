@@ -26,7 +26,7 @@ const double TOL = 1e-8;
  * @param x 
  * @return double 
  */
-double factorial(int x)
+double factorial(double x)
 {
     long double factorial = 1.0;
     for (int i = 1; i <= x; ++i)
@@ -289,4 +289,38 @@ double root_t(double base, double exponent)
 double sqrt_t(double base)
 {
     return root_t(base, 2);
+}
+
+/**
+ * @brief Implementation of f(argument) = log_base(argument)
+ * 
+ * @param base 
+ * @param argument 
+ * @return double 
+ */
+double log_t(double base, double argument){
+    return (argument>=0 && base>0)? ln_t(argument)*divt(ln_t(base)): NULL;
+}
+
+double asin_t(double a)
+{
+    if ((a < -1 || a > 1))
+    {
+        cout << "Debe ingresar un numero entre -1 y 1" << endl;
+        return 0;
+    }
+    double x_knext = 0;
+    double n = 0;
+    double x_k = 0;
+    double fact;
+    double stopCriteria = 1;
+    while ((stopCriteria > TOL) && (n < ITER_MAX))
+    {
+        x_knext = x_k + factorial(factorial(2*n-1))*divt(factorial(factorial(2*n)))*power_t(a, 2*n+1)*divt(2*n+1);
+        cout << x_knext << " "<< endl;
+        stopCriteria = abs(x_knext - x_k);
+        n++;
+        x_k = x_knext;
+    }
+    return x_k;
 }
