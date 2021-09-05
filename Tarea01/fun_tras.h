@@ -3,10 +3,29 @@
 #include <string>
 #include <cmath>
 using namespace std;
+
+/**
+ * @brief Constantante epsilon 
+ * 
+ */
 const double EPS = 2.220446049250313e-16;
+/**
+ * @brief Constante para las maximas iteraciones posibles
+ * 
+ */
 const int ITER_MAX = 5000;
+/**
+ * @brief Constante para la constante de tolerancia de error
+ * 
+ */
 const double TOL = 1e-8;
 
+/**
+ * @brief Implementation for f(x) = x!
+ * 
+ * @param x 
+ * @return double 
+ */
 double factorial(int x)
 {
     long double factorial = 1.0;
@@ -24,6 +43,12 @@ const double fact_40 = factorial(40);
 const double fact_20 = factorial(20);
 const double fact_0 = factorial(0);
 
+/**
+ * @brief Implementation for f(number) = 1/number
+ * 
+ * @param number 
+ * @return double 
+ */
 double divt(double number)
 {
     double a = abs(number);
@@ -150,6 +175,12 @@ double cos_t(int a)
     return x_k;
 }
 
+/**
+ * @brief Implementation for f(a)=tan(a)
+ * 
+ * @param a 
+ * @return double 
+ */
 double tan_t(double a)
 {
     return (sin_t(a) * divt(cos_t(a)));
@@ -185,6 +216,13 @@ double ln_t(double a)
     return x_k;
 }
 
+/**
+ * @brief Implementation for f(base) = base^exponent
+ * 
+ * @param base 
+ * @param exponent 
+ * @return double 
+ */
 double power_t(double base, double exponent)
 {
     return (base >= 0) ? exp_t(ln_t(base) * exponent) : NULL;
@@ -214,7 +252,13 @@ double pi()
     return pi;
 }
 
-
+/**
+ * @brief Implementation for F(base) = base^(1/exponent)
+ * 
+ * @param base 
+ * @param exponent 
+ * @return double result
+ */
 double root_t(double base, double exponent)
 {
     if (base <= 0)
@@ -236,6 +280,12 @@ double root_t(double base, double exponent)
     return  ( base==1) ? 1: x_knext;
 }
 
+/**
+ * @brief Implementation for F(base) = base^(1/2)
+ * 
+ * @param base 
+ * @return double 
+ */
 double sqrt_t(double base)
 {
     return root_t(base, 2);
