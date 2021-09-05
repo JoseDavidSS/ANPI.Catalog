@@ -24,8 +24,9 @@ const long double fact_40 = factorial(40);
 const long double fact_20 = factorial(20);
 const long double fact_0 = factorial(0);
 
-double divt(int a)
+double div_t(int number)
 {
+    int a = abs(number);
     double x_0 = EPS;
     if (a <= fact_100 && a >= fact_80)
     {
@@ -48,16 +49,14 @@ double divt(int a)
         x_0 = pow(EPS, 2);
     }
     int cont = 0;
-    double error = 0;
+    double error = 1;
     double x_ksiguiente;
-    while (cont < ITER_MAX || error > TOL)
+    while (cont < ITER_MAX && error > TOL)
     {
         x_ksiguiente = x_0 * (2 - a * x_0);
         error = abs((x_ksiguiente - x_0) / x_ksiguiente);
         x_0 = x_ksiguiente;
         cont++;
     }
-    cout << "x_k1 " << x_ksiguiente << " "
-         << " iters: " << cont << endl;
-    return x_ksiguiente;
+    return (number>0) ? x_ksiguiente : x_ksiguiente*(-1);
 }
