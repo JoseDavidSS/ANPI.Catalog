@@ -7,7 +7,7 @@ const double EPS = 2.220446049250313e-16;
 const int ITER_MAX = 5000;
 const double TOL = 1e-8;
 
-long double factorial(int x)
+double factorial(int x)
 {
     long double factorial = 1.0;
     for (int i = 1; i <= x; ++i)
@@ -17,16 +17,16 @@ long double factorial(int x)
     return factorial;
 }
 
-const long double fact_100 = factorial(100);
-const long double fact_80 = factorial(80);
-const long double fact_60 = factorial(60);
-const long double fact_40 = factorial(40);
-const long double fact_20 = factorial(20);
-const long double fact_0 = factorial(0);
+const double fact_100 = factorial(100);
+const double fact_80 = factorial(80);
+const double fact_60 = factorial(60);
+const double fact_40 = factorial(40);
+const double fact_20 = factorial(20);
+const double fact_0 = factorial(0);
 
-double div_t(int number)
+double divt(double number)
 {
-    int a = abs(number);
+    double a = abs(number);
     double x_0 = EPS;
     if (a <= fact_100 && a >= fact_80)
     {
@@ -58,5 +58,7 @@ double div_t(int number)
         x_0 = x_ksiguiente;
         cont++;
     }
-    return (number>0) ? x_ksiguiente : x_ksiguiente*(-1);
+    return (number > 0) ? x_ksiguiente : x_ksiguiente * (-1);
 }
+
+
