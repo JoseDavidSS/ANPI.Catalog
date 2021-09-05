@@ -7,7 +7,7 @@ const double EPS = 2.220446049250313e-16;
 const int ITER_MAX = 5000;
 const double TOL = 1e-8;
 
-long double factorial(int x)
+double factorial(int x)
 {
     long double factorial = 1.0;
     for (int i = 1; i <= x; ++i)
@@ -17,15 +17,16 @@ long double factorial(int x)
     return factorial;
 }
 
-const long double fact_100 = factorial(100);
-const long double fact_80 = factorial(80);
-const long double fact_60 = factorial(60);
-const long double fact_40 = factorial(40);
-const long double fact_20 = factorial(20);
-const long double fact_0 = factorial(0);
+const double fact_100 = factorial(100);
+const double fact_80 = factorial(80);
+const double fact_60 = factorial(60);
+const double fact_40 = factorial(40);
+const double fact_20 = factorial(20);
+const double fact_0 = factorial(0);
 
-double divt(int a)
+double divt(double number)
 {
+    double a = abs(number);
     double x_0 = EPS;
     if (a <= fact_100 && a >= fact_80)
     {
@@ -48,21 +49,17 @@ double divt(int a)
         x_0 = pow(EPS, 2);
     }
     int cont = 0;
-    double error = 0;
+    double error = 1;
     double x_ksiguiente;
-    while (cont < ITER_MAX and error > TOL)
+    while (cont < ITER_MAX && error > TOL)
     {
         x_ksiguiente = x_0 * (2 - a * x_0);
         error = abs((x_ksiguiente - x_0) / x_ksiguiente);
         x_0 = x_ksiguiente;
         cont++;
     }
-    cout << "x_k1 " << x_ksiguiente << " "
-         << " iters: " << x_0 << endl;
-    return x_ksiguiente;
+    return (number > 0) ? x_ksiguiente : x_ksiguiente * (-1);
 }
-
-
 
 /**
  * @brief Funcion f(a), donde f(a) = sen(a)
@@ -70,10 +67,11 @@ double divt(int a)
  * @param a valor de a
  * @return double resultado de evaluar f(a)
  */
-double sen_t(int a)
+double sin_t(int a)
 {
-    if(a < 0){
-        cout << "Debe ingresar un número mayor a 0";
+    if (a < 0)
+    {
+        cout << "Debe ingresar un numero mayor a 0" << endl;
         return 0;
     }
     double x_knext;
@@ -84,7 +82,7 @@ double sen_t(int a)
     while ((stopCriteria > TOL) && (n < ITER_MAX))
     {
         fact = factorial(2 * n + 1);
-        x_knext = x_k + (pow(-1, n) * (pow(a, 2 * n + 1) * (1/fact)));
+        x_knext = x_k + (pow(-1, n) * (pow(a, 2 * n + 1) * (1 / fact)));
         stopCriteria = abs(x_knext - x_k);
         n++;
         x_k = x_knext;
@@ -94,17 +92,17 @@ double sen_t(int a)
     return x_k;
 }
 
-
 /**
  * @brief Funcion f(a), donde f(a) = e ^ a
  *
  * @param a valor de a
  * @return double resultado de evaluar f(a)
  */
-double exp_t(int a)
+double exp_t(double a)
 {
-    if(a < 0){
-        cout << "Debe ingresar un número mayor a 0";
+    if (a < 0)
+    {
+        cout << "Debe ingresar un numero mayor a 0" << endl;
         return 0;
     }
     double n = 0;
@@ -115,16 +113,13 @@ double exp_t(int a)
     while ((stopCriteria > TOL) && (n < ITER_MAX))
     {
         fact = factorial(n);
-        x_knext = x_k + pow(a, n) * (1/fact);
+        x_knext = x_k + pow(a, n) * (1 / fact);
         stopCriteria = abs(x_knext - x_k);
         n++;
         x_k = x_knext;
     }
-    cout << "x_k1 " << x_k << " "
-         << " iters: " << n << endl;
-    return x_k;
+    return x_knext;
 }
-
 
 /**
  * @brief Funcion f(a), donde f(a) = cos(a)
@@ -134,8 +129,9 @@ double exp_t(int a)
  */
 double cos_t(int a)
 {
-    if(a < 0){
-        cout << "Debe ingresar un número mayor a 0";
+    if (a < 0)
+    {
+        cout << "Debe ingresar un numero mayor a 0" << endl;
         return 0;
     }
     double x_knext;
@@ -146,16 +142,18 @@ double cos_t(int a)
     while ((stopCriteria > TOL) && (n < ITER_MAX))
     {
         fact = factorial(2 * n);
-        x_knext = x_k + (pow(-1, n) * (pow(a, 2 * n) * (1/fact)));
+        x_knext = x_k + (pow(-1, n) * (pow(a, 2 * n) * (1 / fact)));
         stopCriteria = abs(x_knext - x_k);
         n++;
         x_k = x_knext;
     }
-    cout << "x_k1 " << x_k << " "
-         << " iters: " << n << endl;
     return x_k;
 }
 
+double tan_t(double a)
+{
+    return (sin_t(a) * divt(cos_t(a)));
+}
 
 /**
  * @brief Funcion f(a), donde f(a) = ln(a)
@@ -165,8 +163,9 @@ double cos_t(int a)
  */
 double ln_t(double a)
 {
-    if(a < 0){
-        cout << "Debe ingresar un número mayor a 0";
+    if (a < 0)
+    {
+        cout << "Debe ingresar un numero mayor a 0" << endl;
         return 0;
     }
     double x_knext;
@@ -183,9 +182,12 @@ double ln_t(double a)
         x_k = x_knext;
     }
     x_k = x_k * 2 * formula;
-    cout << "x_k1 " << x_k<< " "
-         << " iters: " << n << endl;
     return x_k;
+}
+
+double power_t(double base, double exponent)
+{
+    return (base >= 0) ? exp_t(ln_t(base) * exponent) : NULL;
 }
 
 /**
@@ -194,12 +196,14 @@ double ln_t(double a)
  *
  * @return pi
  */
-double pi() {
+double pi()
+{
     int i = 0;
     double pi = 0;
     double pi_next;
     double stopCriteria = 1;
-    while ((stopCriteria > TOL) && (i < ITER_MAX)) {
+    while ((stopCriteria > TOL) && (i < ITER_MAX))
+    {
         pi_next = pi + pow(-1, i) * (4.0 / (2.0 * i + 1));
         stopCriteria = abs(pi_next - pi);
         i++;
@@ -208,4 +212,31 @@ double pi() {
     cout << "x_k1 " << pi << " "
          << " iters: " << i << endl;
     return pi;
+}
+
+
+double root_t(double base, double exponent)
+{
+    if (base <= 0)
+    {
+        cout << "Debe ingresar un numero mayor a 0" << endl;
+        return 0;
+    }
+    double x_knext;
+    double n = 0;
+    double x_k = base*divt(2);
+    double stopCriteria = 1;
+    while ((stopCriteria > TOL) && (n < ITER_MAX))
+    {
+        x_knext = x_k - (power_t(x_k,exponent)-base)*divt(exponent*power_t(x_k, exponent-1));
+        stopCriteria = abs(x_knext - x_k)/x_knext;
+        n++;
+        x_k = x_knext;
+    }
+    return  ( base==1) ? 1: x_knext;
+}
+
+double sqrt_t(double base)
+{
+    return root_t(base, 2);
 }
