@@ -211,7 +211,7 @@ double sin_t(double a)
  * @param a valor de a
  * @return double resultado de evaluar f(a)
  */
-double cos_t(int a)
+double cos_t(double a)
 {
     if(a < 0){
         cout << "Debe ingresar un número mayor a 0";
