@@ -3,8 +3,8 @@
 #include <string>
 #include <cmath>
 using namespace std;
-    //double base = ( sin_t(3 * divt(7)) + ln_t(2));
-    //(divt(cos_t(2)) * (root_t(base, 3))) + log(pi(), exp_t(-1));
+//double base = ( sin_t(3 * divt(7)) + ln_t(2));
+//(divt(cos_t(2)) * (root_t(base, 3))) + log(pi(), exp_t(-1));
 /**
  * @brief Constantante epsilon 
  * 
@@ -21,19 +21,21 @@ const int ITER_MAX = 5000;
  */
 const double TOL = 1e-8;
 
-
 /**
  * @brief Checks if a number is even or odd
  *
  * @param x
  * @return double
  */
-bool isEven(int n) {
+bool isEven(int n)
+{
     bool result;
-    if(n % 2 == 0){
+    if (n % 2 == 0)
+    {
         result = true;
     }
-    else{
+    else
+    {
         result = false;
     }
     return result;
@@ -105,7 +107,6 @@ double divt(double number)
     return (number > 0) ? x_ksiguiente : x_ksiguiente * (-1);
 }
 
-
 /**
  * @brief Funcion f(a), donde f(a) = e ^ a
  *
@@ -131,7 +132,6 @@ double exp_t(double a)
 
     return x_k;
 }
-
 
 /**
  * @brief Funcion f(a), donde f(a) = ln(a)
@@ -191,9 +191,12 @@ double sin_t(double a)
     while ((stopCriteria > TOL) && (n < ITER_MAX))
     {
         fact = factorial(2 * n + 1);
-        if(isEven(n)){
+        if (isEven(n))
+        {
             x_knext = x_k + 1 * (pow(a, 2 * n + 1) * divt(fact));
-        } else {
+        }
+        else
+        {
             x_knext = x_k + -1 * (pow(a, 2 * n + 1) * divt(fact));
         }
         stopCriteria = abs(x_knext - x_k);
@@ -204,7 +207,6 @@ double sin_t(double a)
     return x_k;
 }
 
-
 /**
  * @brief Funcion f(a), donde f(a) = cos(a)
  *
@@ -213,7 +215,8 @@ double sin_t(double a)
  */
 double cos_t(double a)
 {
-    if(a < 0){
+    if (a < 0)
+    {
         cout << "Debe ingresar un número mayor a 0";
         return 0;
     }
@@ -225,17 +228,19 @@ double cos_t(double a)
     while ((stopCriteria > TOL) && (n < ITER_MAX))
     {
         fact = factorial(2 * n);
-        if(isEven(n)){
+        if (isEven(n))
+        {
             x_knext = x_k + 1 * (pow(a, 2 * n) * divt(fact));
-        } else {
+        }
+        else
+        {
             x_knext = x_k + -1 * (pow(a, 2 * n) * divt(fact));
         }
         stopCriteria = abs(x_knext - x_k);
         n++;
         x_k = x_knext;
     }
-    cout << "x_k1 " << x_k << " "
-         << " iters: " << n << endl;
+
     return x_k;
 }
 
@@ -249,7 +254,6 @@ double tan_t(double a)
 {
     return (sin_t(a) * divt(cos_t(a)));
 }
-
 
 /**
  * @brief Se obtiene la constante pi al aproximar utilizando
@@ -265,17 +269,19 @@ double pi()
     double stopCriteria = 1;
     while ((stopCriteria > TOL) && (i < ITER_MAX))
     {
-        if(isEven(i)){
+        if (isEven(i))
+        {
             pi_next = pi + 1 * (4.0 / (2.0 * i + 1));
-        } else {
+        }
+        else
+        {
             pi_next = pi + -1 * (4.0 / (2.0 * i + 1));
         }
         stopCriteria = abs(pi_next - pi);
         i++;
         pi = pi_next;
     }
-    cout << "x_k1 " << pi << " "
-         << " iters: " << i << endl;
+
     return pi;
 }
 
@@ -299,12 +305,12 @@ double root_t(double base, double exponent)
     double stopCriteria = 1;
     while ((stopCriteria > TOL) && (n < ITER_MAX))
     {
-        x_knext = x_k - (power_t(x_k,exponent) - base) * divt(exponent * power_t(x_k, exponent-1));
+        x_knext = x_k - (power_t(x_k, exponent) - base) * divt(exponent * power_t(x_k, exponent - 1));
         stopCriteria = abs(x_knext - x_k) / x_knext;
         n++;
         x_k = x_knext;
     }
-    return  ( base == 1) ? 1: x_knext;
+    return (base == 1) ? 1 : x_knext;
 }
 
 /**
@@ -325,28 +331,28 @@ double sqrt_t(double base)
  * @param argument 
  * @return double 
  */
-double log_t(double base, double argument){
-    return (argument>=0 && base>0)? ln_t(argument)*divt(ln_t(base)): NULL;
+double log_t(double base, double argument)
+{
+    return (argument >= 0 && base > 0) ? ln_t(argument) * divt(ln_t(base)) : NULL;
 }
 
 double asin_t(double a)
 {
-     if (a <-1 || a>1)
+    if (abs(a) == 1)
     {
         cout << "Debe ingresar un numero entre -1 y 1" << endl;
         return 0;
     }
     double x_knext;
     double n = 0;
-    double x_k = a;
+    double x_k = abs(a);
     double stopCriteria = 1;
     while ((stopCriteria > TOL) && (n < ITER_MAX))
     {
-        x_knext = x_k - (sin_t(x_k)-a)*divt(cos_t(x_k));
-        stopCriteria = abs(x_knext - x_k)/x_knext;
+        x_knext = x_k - (sin_t(x_k) - abs(a)) * divt(cos_t(x_k));
+        stopCriteria = abs(x_knext - x_k) / x_knext;
         n++;
         x_k = x_knext;
-        cout << "on op. arcsin(" << a << ") = " << x_knext << endl;
     }
-    return  x_knext;
+    return (a < 0) ? -1 * x_knext : x_knext;
 }

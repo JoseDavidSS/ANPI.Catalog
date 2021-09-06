@@ -3,8 +3,8 @@
 using namespace std;
 
 int main(){
-    for (double i = -1; i <=1; i+=0.1)
+    for (double i = -1; i <1; i+=0.1)
     {
-        cout << "sin(" << i << ") = " << sin_t(i) << endl;
+        cout << "arcsin(" << i << ") = " << asin_t(i) << endl;
     }
 }
