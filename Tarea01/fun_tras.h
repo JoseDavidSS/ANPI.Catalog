@@ -3,7 +3,8 @@
 #include <string>
 #include <cmath>
 using namespace std;
-
+    //double base = ( sin_t(3 * divt(7)) + ln_t(2));
+    //(divt(cos_t(2)) * (root_t(base, 3))) + log(pi(), exp_t(-1));
 /**
  * @brief Constantante epsilon 
  * 
@@ -19,6 +20,24 @@ const int ITER_MAX = 5000;
  * 
  */
 const double TOL = 1e-8;
+
+
+/**
+ * @brief Checks if a number is even or odd
+ *
+ * @param x
+ * @return double
+ */
+bool isEven(int n) {
+    bool result;
+    if(n % 2 == 0){
+        result = true;
+    }
+    else{
+        result = false;
+    }
+    return result;
+}
 
 /**
  * @brief Implementation for f(x) = x!
@@ -86,36 +105,6 @@ double divt(double number)
     return (number > 0) ? x_ksiguiente : x_ksiguiente * (-1);
 }
 
-/**
- * @brief Funcion f(a), donde f(a) = sen(a)
- *
- * @param a valor de a
- * @return double resultado de evaluar f(a)
- */
-double sin_t(int a)
-{
-    if (a < 0)
-    {
-        cout << "Debe ingresar un numero mayor a 0" << endl;
-        return 0;
-    }
-    double x_knext;
-    double n = 0;
-    double x_k = 0;
-    double fact;
-    double stopCriteria = 1;
-    while ((stopCriteria > TOL) && (n < ITER_MAX))
-    {
-        fact = factorial(2 * n + 1);
-        x_knext = x_k + (pow(-1, n) * (pow(a, 2 * n + 1) * (1 / fact)));
-        stopCriteria = abs(x_knext - x_k);
-        n++;
-        x_k = x_knext;
-    }
-    cout << "x_k1 " << x_k << " "
-         << " iters: " << n << endl;
-    return x_k;
-}
 
 /**
  * @brief Funcion f(a), donde f(a) = e ^ a
@@ -125,11 +114,7 @@ double sin_t(int a)
  */
 double exp_t(double a)
 {
-    if (a < 0)
-    {
-        cout << "Debe ingresar un numero mayor a 0" << endl;
-        return 0;
-    }
+
     double n = 0;
     double x_k = 0;
     double x_knext;
@@ -138,53 +123,17 @@ double exp_t(double a)
     while ((stopCriteria > TOL) && (n < ITER_MAX))
     {
         fact = factorial(n);
-        x_knext = x_k + pow(a, n) * (1 / fact);
+        x_knext = x_k + pow(a, n) * (divt(fact));
         stopCriteria = abs(x_knext - x_k);
         n++;
         x_k = x_knext;
     }
+
+    cout << "x_k1 " << x_k << " "
+         << " iters: " << n << endl;
     return x_knext;
 }
 
-/**
- * @brief Funcion f(a), donde f(a) = cos(a)
- *
- * @param a valor de a
- * @return double resultado de evaluar f(a)
- */
-double cos_t(int a)
-{
-    if (a < 0)
-    {
-        cout << "Debe ingresar un numero mayor a 0" << endl;
-        return 0;
-    }
-    double x_knext;
-    double n = 0;
-    double x_k = 0;
-    double fact;
-    double stopCriteria = 1;
-    while ((stopCriteria > TOL) && (n < ITER_MAX))
-    {
-        fact = factorial(2 * n);
-        x_knext = x_k + (pow(-1, n) * (pow(a, 2 * n) * (1 / fact)));
-        stopCriteria = abs(x_knext - x_k);
-        n++;
-        x_k = x_knext;
-    }
-    return x_k;
-}
-
-/**
- * @brief Implementation for f(a)=tan(a)
- * 
- * @param a 
- * @return double 
- */
-double tan_t(double a)
-{
-    return (sin_t(a) * divt(cos_t(a)));
-}
 
 /**
  * @brief Funcion f(a), donde f(a) = ln(a)
@@ -207,7 +156,7 @@ double ln_t(double a)
     formula = (a - 1) / (a + 1);
     while ((stopCriteria > TOL) && (n < ITER_MAX))
     {
-        x_knext = (x_k + (1 / (2 * n + 1)) * pow(formula, 2 * n));
+        x_knext = (x_k + (divt(2 * n + 1)) * pow(formula, 2 * n));
         stopCriteria = abs(x_knext - x_k);
         n++;
         x_k = x_knext;
@@ -218,15 +167,97 @@ double ln_t(double a)
 
 /**
  * @brief Implementation for f(base) = base^exponent
- * 
- * @param base 
- * @param exponent 
- * @return double 
+ *
+ * @param base
+ * @param exponent
+ * @return double
  */
 double power_t(double base, double exponent)
 {
     return (base >= 0) ? exp_t(ln_t(base) * exponent) : NULL;
 }
+
+/**
+ * @brief Funcion f(a), donde f(a) = sen(a)
+ *
+ * @param a valor de a
+ * @return double resultado de evaluar f(a)
+ */
+double sin_t(int a)
+{
+    if (a < 0)
+    {
+        cout << "Debe ingresar un numero mayor a 0" << endl;
+        return 0;
+    }
+    double x_knext;
+    double n = 0;
+    double x_k = 0;
+    double fact;
+    double stopCriteria = 1;
+    while ((stopCriteria > TOL) && (n < ITER_MAX))
+    {
+        fact = factorial(2 * n + 1);
+        if(isEven(n)){
+            x_knext = x_k + 1 * (pow(a, 2 * n + 1) * divt(fact));
+        } else {
+            x_knext = x_k + -1 * (pow(a, 2 * n + 1) * divt(fact));
+        }
+        stopCriteria = abs(x_knext - x_k);
+        n++;
+        x_k = x_knext;
+    }
+    cout << "x_k1 " << x_k << " "
+         << " iters: " << n << endl;
+    return x_k;
+}
+
+
+/**
+ * @brief Funcion f(a), donde f(a) = cos(a)
+ *
+ * @param a valor de a
+ * @return double resultado de evaluar f(a)
+ */
+double cos_t(int a)
+{
+    if(a < 0){
+        cout << "Debe ingresar un número mayor a 0";
+        return 0;
+    }
+    double x_knext;
+    double n = 0;
+    double x_k = 0;
+    double fact;
+    double stopCriteria = 1;
+    while ((stopCriteria > TOL) && (n < ITER_MAX))
+    {
+        fact = factorial(2 * n);
+        if(isEven(n)){
+            x_knext = x_k + 1 * (pow(a, 2 * n) * divt(fact));
+        } else {
+            x_knext = x_k + -1 * (pow(a, 2 * n) * divt(fact));
+        }
+        stopCriteria = abs(x_knext - x_k);
+        n++;
+        x_k = x_knext;
+    }
+    cout << "x_k1 " << x_k << " "
+         << " iters: " << n << endl;
+    return x_k;
+}
+
+/**
+ * @brief Implementation for f(a)=tan(a)
+ * 
+ * @param a 
+ * @return double 
+ */
+double tan_t(double a)
+{
+    return (sin_t(a) * divt(cos_t(a)));
+}
+
 
 /**
  * @brief Se obtiene la constante pi al aproximar utilizando
@@ -242,7 +273,11 @@ double pi()
     double stopCriteria = 1;
     while ((stopCriteria > TOL) && (i < ITER_MAX))
     {
-        pi_next = pi + pow(-1, i) * (4.0 / (2.0 * i + 1));
+        if(isEven(i)){
+            pi_next = pi + 1 * (4.0 / (2.0 * i + 1));
+        } else {
+            pi_next = pi + -1 * (4.0 / (2.0 * i + 1));
+        }
         stopCriteria = abs(pi_next - pi);
         i++;
         pi = pi_next;
@@ -268,16 +303,16 @@ double root_t(double base, double exponent)
     }
     double x_knext;
     double n = 0;
-    double x_k = base*divt(2);
+    double x_k = base * divt(2);
     double stopCriteria = 1;
     while ((stopCriteria > TOL) && (n < ITER_MAX))
     {
-        x_knext = x_k - (power_t(x_k,exponent)-base)*divt(exponent*power_t(x_k, exponent-1));
-        stopCriteria = abs(x_knext - x_k)/x_knext;
+        x_knext = x_k - (power_t(x_k,exponent) - base) * divt(exponent * power_t(x_k, exponent-1));
+        stopCriteria = abs(x_knext - x_k) / x_knext;
         n++;
         x_k = x_knext;
     }
-    return  ( base==1) ? 1: x_knext;
+    return  ( base == 1) ? 1: x_knext;
 }
 
 /**
