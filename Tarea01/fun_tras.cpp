@@ -3,9 +3,8 @@
 using namespace std;
 
 int main(){
-    exp_t(-9);
-    for (int i = -5; i < 6; i++)
+    for (double i = -1; i <=1; i+=0.1)
     {
-        cout << "arcsin(" << i << ") = " << asin_t(i) << endl;
+        cout << "sin(" << i << ") = " << sin_t(i) << endl;
     }
 }

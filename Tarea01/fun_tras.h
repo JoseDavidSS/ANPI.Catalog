@@ -181,13 +181,8 @@ double power_t(double base, double exponent)
  * @param a valor de a
  * @return double resultado de evaluar f(a)
  */
-double sin_t(int a)
+double sin_t(double a)
 {
-    if (a < 0)
-    {
-        cout << "Debe ingresar un numero mayor a 0" << endl;
-        return 0;
-    }
     double x_knext;
     double n = 0;
     double x_k = 0;
@@ -205,8 +200,7 @@ double sin_t(int a)
         n++;
         x_k = x_knext;
     }
-    cout << "x_k1 " << x_k << " "
-         << " iters: " << n << endl;
+
     return x_k;
 }
 
@@ -353,7 +347,6 @@ double asin_t(double a)
         n++;
         x_k = x_knext;
         cout << "on op. arcsin(" << a << ") = " << x_knext << endl;
-
     }
     return  x_knext;
 }
