@@ -112,8 +112,7 @@ double sin_t(int a)
         n++;
         x_k = x_knext;
     }
-    cout << "x_k1 " << x_k << " "
-         << " iters: " << n << endl;
+
     return x_k;
 }
 
@@ -304,23 +303,23 @@ double log_t(double base, double argument){
 
 double asin_t(double a)
 {
-    if ((a < -1 || a > 1))
+     if (a <-1 || a>1)
     {
         cout << "Debe ingresar un numero entre -1 y 1" << endl;
         return 0;
     }
-    double x_knext = 0;
+    double x_knext;
     double n = 0;
-    double x_k = 0;
-    double fact;
+    double x_k = a;
     double stopCriteria = 1;
     while ((stopCriteria > TOL) && (n < ITER_MAX))
     {
-        x_knext = x_k + factorial(factorial(2*n-1))*divt(factorial(factorial(2*n)))*power_t(a, 2*n+1)*divt(2*n+1);
-        cout << x_knext << " "<< endl;
-        stopCriteria = abs(x_knext - x_k);
+        x_knext = x_k - (sin_t(x_k)-a)*divt(cos_t(x_k));
+        stopCriteria = abs(x_knext - x_k)/x_knext;
         n++;
         x_k = x_knext;
+        cout << "on op. arcsin(" << a << ") = " << x_knext << endl;
+
     }
-    return x_k;
+    return  x_knext;
 }
