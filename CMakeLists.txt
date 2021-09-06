@@ -9,3 +9,4 @@ include_directories(Tarea01)
 add_executable(anpi_catalogo
         Tarea01/fun_tras.cpp
         Tarea01/fun_tras.h)
+

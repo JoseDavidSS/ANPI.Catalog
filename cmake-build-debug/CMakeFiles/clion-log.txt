@@ -1,4 +1,0 @@
-C:\Users\jessi\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\203.7717.62\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\jessi\Documents\TEC\ANPI\anpi-catalogo
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/jessi/Documents/TEC/ANPI/anpi-catalogo/cmake-build-debug

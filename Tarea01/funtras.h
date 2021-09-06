@@ -49,6 +49,10 @@ bool isEven(int n)
  */
 double factorial(double x)
 {
+    if(x < 0){
+        cout << "Debe ingresar un numero mayor a 0" << endl;
+        return 0;
+    }
     long double factorial = 1.0;
     for (int i = 1; i <= x; ++i)
     {
@@ -72,6 +76,10 @@ const double fact_0 = factorial(0);
  */
 double divt(double number)
 {
+    if(x == 0){
+        cout << "Debe ingresar un numero diferente a 0" << endl;
+        return 0;
+    }
     double a = abs(number);
     double x_0 = EPS;
     if (a <= fact_100 && a >= fact_80)
@@ -294,7 +302,7 @@ double pi()
  */
 double root_t(double base, double exponent)
 {
-    if (base <= 0)
+    if (base < 0)
     {
         cout << "Debe ingresar un numero mayor a 0" << endl;
         return 0;

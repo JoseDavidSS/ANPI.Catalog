@@ -1,3 +1,0 @@
-C:/Users/jessi/Documents/TEC/ANPI/anpi-catalogo/cmake-build-debug/CMakeFiles/anpi_catalogo.dir
-C:/Users/jessi/Documents/TEC/ANPI/anpi-catalogo/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/jessi/Documents/TEC/ANPI/anpi-catalogo/cmake-build-debug/CMakeFiles/rebuild_cache.dir
