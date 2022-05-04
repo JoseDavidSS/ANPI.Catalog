@@ -1,2 +1,2 @@
-# anpi-catalogo
-Catálogo de métodos matemáticos para el curso de análisis numérico
+# ANPI.Catalogue
+Catálogo de métodos matemáticos para el curso de Análisis Numérico para Ingeniería.
