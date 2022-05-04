@@ -1,0 +1,408 @@
+\documentclass[10pt]{article}
+%\usepackage[latin1]{inputenc}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,multicol,enumerate}
+\usepackage{amsfonts}
+\usepackage{multicol}
+
+
+
+
+
+\usepackage{wrapfig}
+
+
+%%%%% Formato REVISTA DE MATEMÁTICA: TEORÍA Y APLICACIONES%%%%%%%
+\topmargin=-2cm\textheight=23cm\textwidth=19cm
+\oddsidemargin=-1cm\evensidemargin=-1cm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\parskip=0.25cm
+\parindent=0mm
+
+\renewcommand{\figurename}{Figura}
+
+\usepackage[dvips]{graphicx}
+\usepackage{url}
+
+%Utilizamos el paquete para incorporar graficos postcript
+
+
+%\usepackage{amssymb}
+\usepackage[psamsfonts]{amssymb} %paquetes para los simbolos matematicos
+\usepackage{latexsym}
+
+\usepackage{color}
+
+\usepackage[framed]{matlab-prettifier}
+
+
+\usepackage[T1]{fontenc}
+
+\renewcommand{\lstlistingname}{C\'odigo}
+
+
+\definecolor{mygray}{rgb}{0.4,0.4,0.4}
+\definecolor{mygreen}{rgb}{0,0.8,0.6}
+\definecolor{myorange}{rgb}{1.0,0.4,0}
+
+
+
+%%%%% Para Insertar Lenguaje M (MATLAB/GNU OCTAVE)
+
+
+
+\begin{document}
+
+%Encabezado
+Instituto Tecnológico de Costa Rica \hfill CE-3102: Análisis Numéricos para Ingeniería\\
+Ingeniería en Computadores \hfill Semestre: II - 2021\\
+
+\begin{center}\textbf{\huge Catálogo Grupal de Algoritmos}  \end{center}
+
+{\bf Integrantes: }
+\begin{itemize}
+\item Jessica Espinoza Quesada - Carnet 2018135811
+\item Jose David Sánchez Schnitzler - Carnet 2018142388
+\item Tomás Felipe Segura Monge - Carnet 2018099729
+\end{itemize}
+
+\section{Tema 1: Ecuaciones No lineales}
+
+\subsection{Método 1: Bisección}
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Biseccion.}]{parte1/biseccion.py}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 2: Newton-Raphson}
+\UseRawInputEncoding
+%Lenguaje Octave/Matlab
+\lstinputlisting[style=Matlab-editor, basicstyle=\mlttfamily\normalsize, caption={Newton Raphson}]{parte1/newton_raphson.m}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 3: Secante}
+\UseRawInputEncoding
+%Lenguaje C++
+\lstinputlisting[basicstyle=\normalsize\ttfamily\color{black}, commentstyle=\color{mygray}, frame=single, numbersep=5pt, numberstyle=\tiny\color{mygray}, keywordstyle=\color{mygreen}, showspaces=false, showstringspaces=false, stringstyle=\color{myorange}, tabsize=2, language=C++, caption={Metodo de la secante.}]{parte1/secante.cpp}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 4: Falsa Posición}
+\UseRawInputEncoding
+%Lenguaje C++
+\lstinputlisting[basicstyle=\normalsize\ttfamily\color{black}, commentstyle=\color{mygray}, frame=single, numbersep=5pt, numberstyle=\tiny\color{mygray}, keywordstyle=\color{mygreen}, showspaces=false, showstringspaces=false, stringstyle=\color{myorange}, tabsize=2, language=C++, caption={Metodo de la falsa posicion.}]{parte1/falsa_posicion.cpp}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 5: Punto Fijo}
+\UseRawInputEncoding
+%Lenguaje Octave/Matlab
+\lstinputlisting[style=Matlab-editor, basicstyle=\mlttfamily\normalsize, caption={Punto Fijo.}]{parte1/punto_fijo.m}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 6: Muller}
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\small,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Muller.}]{parte1/muller.py}
+\inputencoding{utf8}
+
+\newpage
+
+\section{Tema 2: Optimización}
+
+\subsection{Método 1: Descenso Coordinado}
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={coordinado}]{parte2/coordinado.py}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 2: Gradiente Conjugado no Lineal}
+\UseRawInputEncoding
+%Lenguaje Octave/Matlab
+\lstinputlisting[style=Matlab-editor, basicstyle=\mlttfamily\normalsize, caption={gradiente}]{parte2/gradiente.m}
+\inputencoding{utf8}
+
+\newpage
+
+\section{Tema 3: Sistemas de Ecuaciones}
+
+\subsection{Métodos auxiliares}
+
+\subsubsection{Determinante de matriz}
+
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={determinante de matriz nxn}]{parte3/python/métodos auxiliares/determinanteNxN.py}
+\inputencoding{utf8}
+
+\newpage
+
+\subsubsection{Sustitución hacia atrás}
+
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={sustitucion hacia atras}]{parte3/python/métodos auxiliares/sust_atras.py}
+\inputencoding{utf8}
+
+\newpage
+
+\subsubsection{Sustitución hacia adelante}
+
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={sustitucion hacia adelante}]{parte3/python/métodos auxiliares/sust_adelante.py}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 1: Eliminación Gaussiana}
+
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={eliminacion gaussiana}]{parte3/python/gaussiana.py}
+\inputencoding{utf8}
+\newpage
+
+
+\subsection{Método 2: Factorización LU}
+
+\UseRawInputEncoding
+%Lenguaje C++
+\lstinputlisting[basicstyle=\normalsize\ttfamily\color{black}, commentstyle=\color{mygray}, frame=single, numbersep=5pt, numberstyle=\tiny\color{mygray}, keywordstyle=\color{mygreen}, showspaces=false, showstringspaces=false, stringstyle=\color{myorange}, tabsize=2, language=C++, caption={Metodo de la factorización LU.}]{parte3/C++/LU.cpp}
+\inputencoding{utf8}
+\newpage
+
+\UseRawInputEncoding
+%Lenguaje C++
+\lstinputlisting[basicstyle=\normalsize\ttfamily\color{black}, commentstyle=\color{mygray}, frame=single, numbersep=5pt, numberstyle=\tiny\color{mygray}, keywordstyle=\color{mygreen}, showspaces=false, showstringspaces=false, stringstyle=\color{myorange}, tabsize=2, language=C++, caption={Metodo auxiliar de la factorizacion LU para obtener el determinante de una matriz.}]{parte3/C++/determinant.h}
+\inputencoding{utf8}
+\newpage
+
+\subsection{Método 3: Factorización de Cholesky}
+
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={factorizacion de Cholesky}]{parte3/python/fact_cholesky.py}
+\inputencoding{utf8}
+
+\newpage
+
+
+\subsection{Método 4: Método de Thomas.}
+
+\UseRawInputEncoding
+%Lenguaje C++
+\lstinputlisting[basicstyle=\normalsize\ttfamily\color{black}, commentstyle=\color{mygray}, frame=single, numbersep=5pt, numberstyle=\tiny\color{mygray}, keywordstyle=\color{mygreen}, showspaces=false, showstringspaces=false, stringstyle=\color{myorange}, tabsize=2, language=C++, caption={Metodo de Thomas.}]{parte3/C++/thomas.cpp}
+\inputencoding{utf8}
+\newpage
+
+\subsection{Método 5: Jacobi}
+
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={jacobi}]{parte3/python/jacobi.py}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 6: Gauss-Seidel}
+
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={gauss-seidel}]{parte3/python/gauss_seidel.py}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 7: Método de la Pseudoinversa}
+
+\UseRawInputEncoding
+%Lenguaje C++
+\lstinputlisting[basicstyle=\normalsize\ttfamily\color{black}, commentstyle=\color{mygray}, frame=single, numbersep=5pt, numberstyle=\tiny\color{mygray}, keywordstyle=\color{mygreen}, showspaces=false, showstringspaces=false, stringstyle=\color{myorange}, tabsize=2, language=C++, caption={pseudoinversa}]{parte3/C++/pseudoinversa.cpp}
+\inputencoding{utf8}
+\newpage
+
+
+\section{Tema 4: Polinomio de interpolación.}
+
+\subsection{Método 1: Método de Lagrange}
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Lagrange}]{parte4/lagrange.py}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 2: Método de Diferencias Divididas de Newton}
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Diferencias Divididas de Newton}]{parte4/dd_newton.py}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 3: Trazador Cúbico Natural}
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Trazador Cubico Natural}]{parte4/traz_cubico.py}
+\inputencoding{utf8}
+
+
+\newpage
+
+\subsection{Método 4: Cota de Error Polinomio de Interpolación}
+%Lenguaje Python
+\lstinputlisting[language=Octave,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Cota de Error Polinomio de Interpolación}]{parte4/cota_poly_inter.m}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 5: Cota de Error Trazador Cúbico Natural}
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Cota de Error Trazador Cubico Natural}]{parte4/cota_traz_cubico.py}
+\inputencoding{utf8}
+
+\newpage
+
+\section{Tema 5: Integración Numérica.}
+
+\subsection{Método 1: Regla del Trapecio y Cota de Error.}
+%Lenguaje Octave
+\lstinputlisting[language=Octave,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Regla del Trapecio y Cota de Error}]{parte5/trapecio.m}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 2: Regla de Simpson y Cota de Error}
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Regla de Simpson y Cota de Error}]{parte5/simpson.py}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 3: Regla Compuesta del Trapecio y Cota de Error.}
+%Lenguaje Octave
+\lstinputlisting[language=Octave,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Regla Compuesta del Trapecio y Cota de Error}]{parte5/trapecio_compuesto.m}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 4: Regla Compuesta de Simpson y Cota de Error}
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Regla Compuesta de Simpson y Cota de Error}]{parte5/simpson_compuesto.py}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 5: Cuadratura Gaussiana y Cota de Error}
+\UseRawInputEncoding
+\lstinputlisting[language=Octave,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Cuadratura Gaussiana y Cota de Errorr}]{parte5/cuad_gaussiana.m}
+\inputencoding{utf8}
+
+\newpage
+\section{Tema 6: Diferenciación Numérica.}
+
+\subsection{Método 1: Método de Euler.}
+
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Metodo de Euler}]{parte6/euler.py}
+\inputencoding{utf8}
+
+
+
+\newpage
+\subsection{Método 2: Método Predictor-Corrector.}
+
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Octave,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Metodo Predictor-Corrector}]{parte6/predictor_corrector.m}
+\inputencoding{utf8}
+
+\newpage
+\subsection{Método 3: Runge-Kutta de Orden 4.}
+
+\UseRawInputEncoding
+%Lenguaje Python
+\lstinputlisting[language=Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Runge-Kutta de Orden 4}]{parte6/runge_kutta_4.py}
+\inputencoding{utf8}
+
+\newpage
+
+\subsection{Método 4: Adam-Bashford de Orden 4.}
+
+\UseRawInputEncoding
+%Lenguaje Octave
+\lstinputlisting[language=Octave,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Adam-Bashford de Orden 44}]{parte6/adam_bashford_4.m}
+\inputencoding{utf8}
+
+
+\newpage
+https://www.overleaf.com/project/61155049b499c66a08272784
+\section{Tema 7: Valores y Vectores Propios.}
+
+\subsection{Método 1: Método de la Potencia.}
+
+\UseRawInputEncoding
+%Lenguaje Octave
+\lstinputlisting[language=Octave,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Metodo de la Potencia}]{parte7/potencia.m}
+\inputencoding{utf8}
+
+\subsection{Método 2: Método de la Potencia Inversa.}
+
+\UseRawInputEncoding
+%Lenguaje C++
+\lstinputlisting[language = C++,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Metodo de la Potencia Inversa}]{parte7/potencia_inversa.cpp}
+\inputencoding{utf8}
+
+
+\subsection{Método 3: Método QR.}
+
+\UseRawInputEncoding
+%Lenguaje Octave
+\lstinputlisting[language = Python,
+basicstyle=\ttfamily\normalsize,morekeywords={as,__init__,MyClass}, keywordstyle=\color{violet}\ttfamily, frame=single, commentstyle=\color{gray}\ttfamily, showstringspaces=false, caption={Metodo QR}]{parte7/metodo_qr.py}
+\inputencoding{utf8}
+
+\end{document}
